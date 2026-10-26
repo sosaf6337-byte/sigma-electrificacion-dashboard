@@ -1,8 +1,16 @@
 # SIGMA × Tecnológico de Monterrey · Electrificación del transporte
 
-Dashboard local en español para planear una ruta y explorar el consumo conjunto de tracción, refrigeración y batería. **Modelo preliminar sin calibración operacional.** Incluye una demostración sintética y los logotipos oficiales solicitados para el proyecto; no implica aprobación institucional.
+Dashboard en español para planear una ruta y explorar el consumo conjunto de tracción, refrigeración y batería. **Modelo preliminar sin calibración operacional.** Incluye una demostración sintética y los logotipos oficiales solicitados para el proyecto; no implica aprobación institucional.
 
-## Ejecutar la demostración
+## Probar en línea sin instalar
+
+**[Abrir la demostración pública](https://sigma-electrificacion-demo.onrender.com/)**
+
+Usa datos sintéticos, sesiones separadas por visitante y no admite importar el Excel ni consultar datos privados de SIGMA. Abre **Mapa y ruta**, pulsa **Cargar ejemplo**, después **Calcular y guardar ruta** y **Simular tracción y refrigeración**.
+
+Las sesiones duran hasta 2 horas y pueden perderse cuando el servidor gratuito se reinicia o suspende. Descarga los resultados que quieras conservar. El primer acceso tras inactividad puede tardar aproximadamente un minuto en [Render gratuito](https://render.com/docs/free). No introduzcas información confidencial.
+
+## Ejecutar localmente
 
 Requiere Python 3.12. No se necesita el Excel para probar el mapa o el simulador.
 
@@ -32,7 +40,7 @@ El mapa usa teselas de OpenStreetMap con atribución. **Calcular por calles** en
 
 El perfil OSRM es de automóvil: no garantiza restricciones de peso, altura, acceso o circulación para camiones. No incorpora tráfico en tiempo real. El perfil de velocidad de simulación es sintético y la pendiente es un supuesto constante, no elevación obtenida del mapa. El tiempo OSRM se muestra como referencia; la jornada simulada usa el perfil generado y las paradas. Si el servicio falla se conserva el trazado editable y se muestra el error; no se sustituye silenciosamente por una recta.
 
-## Importación opcional
+## Importación opcional, solo en la instalación local
 
 En **Datos de operación** puede importar un libro compatible. También puede usar:
 
@@ -59,6 +67,6 @@ Las pruebas son independientes del Excel privado y no llaman servicios externos.
 
 La versión para visitantes se ejecuta con `sigma_dashboard.public_app:app`, en un servidor dedicado a datos sintéticos y sesiones temporales aisladas. No carga el catálogo ni admite importaciones. Consulta [demostración pública y protección de datos](docs/demo-publica.md) para límites, alojamiento, verificación y retención.
 
-Aplicación para un equipo, escuchando en `127.0.0.1`. Compartir el código en GitHub permite revisarlo y ejecutarlo localmente; no crea una aplicación web alojada. No exponga este servidor a Internet: no tiene autenticación multiusuario, colas ni aislamiento de datos. Para un despliegue compartido se requieren esos componentes y un proveedor de mapas con capacidad y condiciones adecuadas.
+La instalación local usa `sigma_dashboard.app:app` y escucha en `127.0.0.1`. Ese servidor permite trabajar con datos operativos locales y no debe exponerse a Internet. La demostración alojada utiliza el servidor público separado descrito arriba. Un servicio de operación real compartido requiere autenticación, permisos, almacenamiento persistente, capacidad y validación adicionales.
 
 Los balances numéricos prueban consistencia de las ecuaciones implementadas; no certifican viabilidad técnica, sanitaria o financiera de una operación real. La máxima fidelidad requiere perfiles medidos y mapas de fabricante, calibración y validación con jornadas independientes.
