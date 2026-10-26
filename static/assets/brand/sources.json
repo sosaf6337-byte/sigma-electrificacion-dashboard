@@ -1,0 +1,25 @@
+{
+  "retrieved_at": "2026-10-26T21:29:52.750058+00:00",
+  "assets": [
+    {
+      "file": "sigma-alimentos.png",
+      "source": "https://www.sigmafoods.com/wp-content/uploads/2023/11/logo-sigma-color.png",
+      "discovery": "https://www.sigmafoods.com/wp-json/wp/v2/media?search=logo+sigma",
+      "note": "Logotipo Sigma Alimentos en color; archivo original sin modificaciones.",
+      "sha256": "bd448a0ea59d2cb22588ed21dd324d0acc3d54f803e33718fedbfb2258884b0b"
+    },
+    {
+      "file": "tecnologico-de-monterrey.svg",
+      "source": "https://tec.mx/es",
+      "note": "SVG original del pie de la web oficial, sin distintivo de aniversario. viewBox 0 0 195 52; trazos conservados; relleno negro por defecto del SVG.",
+      "sha256": "7e4cc7105d3af7984ade613c4a233fa8704fb273053a591afbb68a623e606b01"
+    }
+  ],
+  "palette": {
+    "source": "https://tec.mx/themes/custom/emulsify_tec/dist/style.css?tmme9z",
+    "azul_t": "#0039a6",
+    "marino": "#003087",
+    "azul_o": "#041e42",
+    "aqua": "#00838f"
+  }
+}

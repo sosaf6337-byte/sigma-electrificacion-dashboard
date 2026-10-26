@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>SIGMA × Tecnológico de Monterrey · Electrificación</title>
+  <link rel="stylesheet" href="/static/vendor/leaflet/leaflet.css">
+  <script src="/static/vendor/leaflet/leaflet.js" defer></script>
+  <link rel="stylesheet" href="/static/style.css">
+  <script type="module" src="/static/app.js"></script>
+</head>
+<body>
+<a href="#main" class="skip">Ir al contenido</a>
+<aside class="sidebar">
+  <div class="brand">
+    <div class="brand-lockup" role="group" aria-label="SIGMA Alimentos y Tecnológico de Monterrey">
+      <img class="brand-sigma" src="/static/assets/brand/sigma-alimentos.png" width="250" height="142" alt="Sigma Alimentos">
+      <span class="brand-separator" aria-hidden="true">×</span>
+      <img class="brand-tec" src="/static/assets/brand/tecnologico-de-monterrey.svg" width="195" height="52" alt="Tecnológico de Monterrey">
+    </div>
+    <span class="brand-caption">Electrificación del transporte</span>
+  </div>
+  <div class="nav-caption">ESPACIO DE TRABAJO</div>
+  <nav aria-label="Navegación principal">
+    <a href="#overview" data-page="overview"><span class="nav-icon">◫</span>Vista general</a>
+    <a href="#data" data-page="data"><span class="nav-icon">▤</span>Datos de operación</a>
+    <a href="#route" data-page="route"><span class="nav-icon">◎</span>Mapa y ruta</a>
+    <a href="#scenario" data-page="scenario"><span class="nav-icon">⚙</span>Configurar escenario</a>
+    <a href="#results" data-page="results"><span class="nav-icon">⌁</span>Resultados</a>
+    <a href="#compare" data-page="compare"><span class="nav-icon">⇄</span>Comparar ejecuciones</a>
+    <a href="#method" data-page="method"><span class="nav-icon">∑</span>Modelo y alcance</a>
+  </nav>
+  <div class="sidebar-foot"><span class="local-dot"></span>Aplicación local<br><small>Modelo preliminar · v0.1.0<br>Validación operacional pendiente</small></div>
+</aside>
+<div class="workspace">
+  <header class="topbar"><span>Transporte refrigerado <span class="slash">/</span> Evaluación de electrificación</span><span class="badge neutral">Solo en este equipo</span></header>
+  <main id="main" tabindex="-1"></main>
+  <footer>SIGMA Alimentos × Tecnológico de Monterrey · Las conclusiones dependen de los datos y supuestos del escenario.</footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+<dialog id="detail-dialog" aria-labelledby="dialog-title"><div class="dialog-top"><h2 id="dialog-title">Detalle</h2><button id="close-dialog" class="icon-button" aria-label="Cerrar detalle">×</button></div><div id="dialog-content"></div></dialog>
+</body>
+</html>
