@@ -1,23 +1,32 @@
 from __future__ import annotations
 import json
 import sqlite3
+from contextvars import ContextVar
+from contextlib import contextmanager
 from pathlib import Path
 from uuid import uuid4
 from datetime import datetime, timezone
 
 ROOT = Path(__file__).resolve().parents[1]
 DB = ROOT / "data" / "dashboard.sqlite3"
+request_db: ContextVar[Path | None] = ContextVar("sigma_request_db", default=None)
 
 
 def now():
     return datetime.now(timezone.utc).isoformat()
 
 
+@contextmanager
 def connect():
-    DB.parent.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(DB, timeout=30)
+    db = request_db.get() or DB
+    db.parent.mkdir(parents=True, exist_ok=True)
+    con = sqlite3.connect(db, timeout=30)
     con.row_factory = sqlite3.Row
-    return con
+    try:
+        with con:
+            yield con
+    finally:
+        con.close()
 
 
 def init():

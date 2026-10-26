@@ -57,6 +57,8 @@ Las pruebas son independientes del Excel privado y no llaman servicios externos.
 
 ## Alcance de uso
 
+La versión para visitantes se ejecuta con `sigma_dashboard.public_app:app`, en un servidor dedicado a datos sintéticos y sesiones temporales aisladas. No carga el catálogo ni admite importaciones. Consulta [demostración pública y protección de datos](docs/demo-publica.md) para límites, alojamiento, verificación y retención.
+
 Aplicación para un equipo, escuchando en `127.0.0.1`. Compartir el código en GitHub permite revisarlo y ejecutarlo localmente; no crea una aplicación web alojada. No exponga este servidor a Internet: no tiene autenticación multiusuario, colas ni aislamiento de datos. Para un despliegue compartido se requieren esos componentes y un proveedor de mapas con capacidad y condiciones adecuadas.
 
 Los balances numéricos prueban consistencia de las ecuaciones implementadas; no certifican viabilidad técnica, sanitaria o financiera de una operación real. La máxima fidelidad requiere perfiles medidos y mapas de fabricante, calibración y validación con jornadas independientes.

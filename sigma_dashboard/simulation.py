@@ -6,6 +6,7 @@ from datetime import datetime, timezone
 import hashlib
 import json
 import math
+import time
 
 from . import MODEL_VERSION
 from .schemas import SimulationConfig
@@ -34,7 +35,8 @@ def interpolate(route, times, t):
     return a.speed_m_s+(b.speed_m_s-a.speed_m_s)*w, a.grade_pct+(b.grade_pct-a.grade_pct)*w
 
 
-def run_simulation(cfg: SimulationConfig):
+def run_simulation(cfg: SimulationConfig, *, max_steps=300000, max_runtime_s=None):
+    started = time.monotonic()
     times = [p.time_s for p in cfg.route]
     end = times[-1]
     if cfg.vehicle.initial_payload_kg > cfg.vehicle.payload_capacity_kg:
@@ -84,8 +86,10 @@ def run_simulation(cfg: SimulationConfig):
         if dt <= 1e-9:
             raise ValueError("Paso numérico inválido.")
         numerical_steps += 1
-        if numerical_steps > 300000:
-            raise ValueError("Más de 300 000 pasos internos; revisar parámetros y duración.")
+        if numerical_steps > max_steps:
+            raise ValueError(f"Se excedieron {max_steps:,} pasos internos; reduce duración o revisa parámetros.")
+        if max_runtime_s is not None and numerical_steps % 250 == 0 and time.monotonic()-started > max_runtime_s:
+            raise ValueError("Esta configuración excede el tiempo de cálculo disponible en la demostración pública.")
         v0, gr0 = interpolate(cfg.route,times,t)
         v1, gr1 = interpolate(cfg.route,times,t+dt)
         road = road_load(cfg.vehicle,cfg.weather,payload,v0,v1,(gr0+gr1)/2,dt)
